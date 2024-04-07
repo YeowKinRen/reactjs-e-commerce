@@ -15,7 +15,7 @@ import { CartProvider } from './context/CartContext.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/reactjs-e-commerce/",
     element: <App />,
     children: [
       {
