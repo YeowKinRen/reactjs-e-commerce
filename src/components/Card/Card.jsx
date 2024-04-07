@@ -10,7 +10,7 @@ const Card = ({ item }) => {
                 <div className="card-body">
                     <img src={image} alt={description} className='img-fluid' />
                     <h5 className="card-title">{title}</h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary">USD {price}</h6>
+                    <h6 className="card-subtitle mb-2 text-body-secondary">USD {price.toFixed(2)}</h6>
                 </div>
             </div>
         </Link>

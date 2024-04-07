@@ -30,7 +30,7 @@ const Product = () => {
           <div className='col-6'>
             <h2>{data?.title}</h2>
             <h4>{data?.category}</h4>
-            <h5>{data?.price}</h5>
+            <h5>USD {data?.price.toFixed(2)}</h5>
             <p>{data?.description}</p>
             <button className='btn btn-primary' onClick={addToCart}>Add to Cart</button>
             

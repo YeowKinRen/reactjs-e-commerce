@@ -13,7 +13,7 @@ const CartItem = ({ cartItem }) => {
                 </div>
                 <div className="col-9">
                     <h4>{cartItem.item.title}</h4>
-                    <p>USD {cartItem.item.price}</p>
+                    <p>USD {cartItem.item.price.toFixed(2)}</p>
                     <p>
                         <button className='btn' onClick={() => dispatch({
                             type: 'REMOVE_ITEM',
