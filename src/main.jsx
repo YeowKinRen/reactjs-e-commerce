@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import {createHashRouter, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ShopCategory from './pages/ShopCategory/ShopCategory.jsx'
 import Product from './pages/Product/Product.jsx'
 import Cart from './pages/Cart/Cart.jsx'
@@ -13,14 +13,14 @@ import banner2 from './assets/banner2.jpg'
 import banner3 from './assets/banner3.jpg'
 import { CartProvider } from './context/CartContext.jsx'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/reactjs-e-commerce/",
+    path: "/*",
     element: <App />,
     children: [
       {
         path: "",
-        element: <Home image={banner1} title="Shoppr" />
+        element: <Home image={banner1} title="Shoppr" />,
       },
       {
         path: "categories/electronics",
