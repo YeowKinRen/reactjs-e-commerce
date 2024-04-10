@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-warning">
             <div className="container">
-                <a className="navbar-brand" href="/">Shopper</a>
+                <a className="navbar-brand" href="/reactjs-e-commerce/">Shopper</a>
                 <button 
                     className="navbar-toggler" 
                     type="button" 
