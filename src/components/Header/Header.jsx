@@ -1,20 +1,39 @@
 import React from 'react'
 import './Header.css';
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink,Link, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext'
+import { useState, useEffect } from "react"
+
 
 const Header = () => {
 
     const {totalItemsInCart} = useCart();
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+    const location = useLocation();
+
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
+    useEffect(() => {
+        setIsNavCollapsed(true); // Collapse navbar when location changes
+    }, [location]);
 
     return (
         <nav className="navbar navbar-expand-lg bg-warning">
             <div className="container">
-                <a className="navbar-brand">Shopper</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <a className="navbar-brand" href="/">Shopper</a>
+                <button 
+                    className="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#basic-navbar-nav" 
+                    aria-controls="basic-navbar-nav" 
+                    aria-expanded={!isNavCollapsed ? true : false} 
+                    aria-label="Toggle navigation" 
+                    onClick={handleNavCollapse}
+                >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className={`${isNavCollapsed ? 'collapse' : ''}  navbar-collapse`} id="basic-navbar-nav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
@@ -33,6 +52,7 @@ const Header = () => {
                         </li>
 
                     </ul>
+                    
                     <div className="d-flex">
 
                         <Link to="/cart"><button className="btn btn-outline-success me-2"><i className="bi bi-cart"></i> ({totalItemsInCart})</button></Link>
