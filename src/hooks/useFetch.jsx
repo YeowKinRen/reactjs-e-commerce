@@ -12,10 +12,15 @@ export const useFetch = (url) => {
     // fetch
     // Everytime the url change, we will call back the API to new url
     useEffect(() => {
+
+        console.log(url);
+
+
         // Function definition
         const fetchData = async () => {
             setLoading(true);
             try {
+                console.log(url);
                 const response = await fetch(url);
                 const jsonData = await response.json();
 

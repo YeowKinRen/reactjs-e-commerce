@@ -6,7 +6,7 @@ import Pagination from "react-bootstrap/Pagination";
 
 
 
-const Featured = () => {
+const Category = ({category}) => {
     const [state, setState] = useState({
         maxPage: 20,
         limit: 6,
@@ -14,7 +14,7 @@ const Featured = () => {
     });
 
 
-    const url = `https://fakestoreapi.com/products?page=${state.activePage}`;
+    const url = `https://fakestoreapi.com/products/category/${category.toLowerCase()}?page=${state.activePage}`;
 
     let { data, loading, error } = useFetch(url);
 
@@ -37,7 +37,7 @@ const Featured = () => {
 
     return (
         <div className='container my-3'>
-            <h2>Featured products</h2>
+            <h2>{category}</h2>
             {
                 error ?
                     <p>Something is wrong</p>
@@ -47,7 +47,7 @@ const Featured = () => {
                         <div className='row'>
                             {
                                 data?.slice((state.activePage-1)*state.limit, ((state.activePage-1)*state.limit)+state.limit).map((val) => <div className='col-2' key={val.id}>
-                                    <Card item={val} />
+                                <Card item={val} />
                                 </div>)
                             }
                         </div>
@@ -77,4 +77,4 @@ const Featured = () => {
 }
 
 
-export default Featured
+export default Category
