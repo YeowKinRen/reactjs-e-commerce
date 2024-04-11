@@ -23,7 +23,6 @@ export const useFetch = (url) => {
                 console.log(url);
                 const response = await fetch(url);
                 const jsonData = await response.json();
-
                 setData(jsonData);
             }
             catch (err) {

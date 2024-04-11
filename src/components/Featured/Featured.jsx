@@ -21,6 +21,7 @@ const Featured = () => {
     useEffect(() => {
         // Calculate maxPage after fetching data
         if (!loading && data) {
+            data.sort((a, b) => b.rating.rate - a.rating.rate) // featured based on rating
             const totalProducts = data.length; // Assuming API returns total products
             const maxPage = Math.ceil(totalProducts / state.limit);
             setState(prevState => ({ ...prevState, maxPage }));
@@ -46,7 +47,7 @@ const Featured = () => {
                         :
                         <div className='row'>
                             {
-                                data?.slice((state.activePage-1)*state.limit, ((state.activePage-1)*state.limit)+state.limit).map((val) => <div className='col-2' key={val.id}>
+                                data?.slice((state.activePage - 1) * state.limit, ((state.activePage - 1) * state.limit) + state.limit).map((val) => <div className='col-2' key={val.id}>
                                     <Card item={val} />
                                 </div>)
                             }
